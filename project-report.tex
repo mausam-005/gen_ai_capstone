@@ -1,0 +1,207 @@
+\documentclass[12pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+% ---------- Title ----------
+\title{\textbf{TECHNICAL PROJECT REPORT}\\
+Customer Churn Prediction and Agentic Retention Strategy}
+\date{March 1, 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Student ID} & \textbf{Full Name} \\
+\hline
+2401020008 & Akshay Y \\
+2401010313 & Harsha Karthikeya \\
+2401010137 & Dakarapu Hemamdhar Nath \\
+2401010266 & Mausam Kumar Dwivedi \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Topic: Predictive Analytics and Intelligent Retention Systems}
+\end{center}
+
+\newpage
+
+% ---------------------------------------------------
+
+\section{Problem Statement}
+
+Customer churn is a critical challenge in subscription-based industries such as telecommunications. Losing customers directly impacts recurring revenue and increases customer acquisition costs. Businesses require data-driven systems that can proactively identify at-risk customers and enable timely intervention.
+
+The objective of this project was to develop a machine learning system capable of predicting customer churn probability using historical behavioral data. The system further aims to evolve into an intelligent, agent-based retention strategist capable of generating structured intervention strategies.
+
+% ---------------------------------------------------
+
+\section{Data Description}
+
+The dataset utilized for this project is the Telco Customer Churn Dataset, consisting of 7,032 customer records.
+
+\subsection*{Primary Features}
+
+\begin{itemize}
+    \item \textbf{Tenure:} Duration of customer relationship (in months).
+    \item \textbf{Monthly Charges:} Recurring monthly billing amount.
+    \item \textbf{Total Charges:} Total cumulative charges.
+    \item \textbf{Contract Type:} Month-to-month, One-year, Two-year.
+    \item \textbf{Internet Service:} DSL, Fiber optic, None.
+    \item \textbf{Payment Method:} Electronic check, Mailed check, etc.
+    \item \textbf{Senior Citizen:} Binary demographic indicator.
+    \item \textbf{Service Subscriptions:} Add-on services (Tech support, Streaming, etc.).
+    \item \textbf{Churn (Target):} Whether the customer left the service (Yes/No).
+\end{itemize}
+
+After preprocessing and encoding, the dataset contained 30 numerical features.
+
+% ---------------------------------------------------
+
+\section{Exploratory Data Analysis (EDA)}
+
+During the EDA phase, several insights influenced the modeling strategy:
+
+\begin{itemize}
+    \item Customers with month-to-month contracts showed significantly higher churn rates.
+    \item Higher monthly charges correlated positively with churn probability.
+    \item Short tenure customers were more likely to churn.
+    \item Certain payment methods (e.g., electronic check) exhibited elevated churn risk.
+\end{itemize}
+
+These findings guided feature engineering and model selection.
+
+% ---------------------------------------------------
+
+\section{Methodology}
+
+We implemented a classical machine learning classification pipeline to predict churn probability.
+
+\subsection*{Preprocessing Pipeline}
+
+\begin{itemize}
+    \item \textbf{Data Cleaning:} Handled missing values and converted categorical targets into binary format.
+    \item \textbf{Encoding:} Applied One-Hot Encoding to categorical variables.
+    \item \textbf{Feature Scaling:} Used \texttt{StandardScaler} to normalize numerical features.
+    \item \textbf{Train-Test Split:} Applied an 80/20 split for evaluation.
+\end{itemize}
+
+\subsection*{Models Implemented}
+
+\textbf{1. Logistic Regression (Final Model)}
+\begin{itemize}
+    \item Accuracy: 78.7\%
+    \item Strong Recall and ROC-AUC performance
+    \item Provides churn probability scores
+\end{itemize}
+
+\textbf{2. Decision Tree}
+\begin{itemize}
+    \item Accuracy: 72.4\%
+    \item Lower generalization performance
+\end{itemize}
+
+Logistic Regression was selected due to superior overall performance and improved recall for churn detection.
+
+% ---------------------------------------------------
+
+\section{Evaluation}
+
+The model was evaluated using the following metrics:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Metric} & \textbf{Score} & \textbf{Interpretation} \\
+\midrule
+Accuracy & 78.7\% & Overall prediction correctness. \\
+Precision & 0.74 & Correct positive predictions proportion. \\
+Recall & 0.81 & Effectiveness in identifying churners. \\
+F1-Score & 0.77 & Balance between precision and recall. \\
+ROC-AUC & 0.84 & Discrimination capability of model. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Special emphasis was placed on Recall for the churn class, since false negatives represent lost customers.
+
+% ---------------------------------------------------
+
+\section{Retention Strategy Prototype}
+
+Based on churn probability output, customers were categorized into risk groups:
+
+\textbf{High Risk (>70\% Probability)}
+\begin{itemize}
+    \item Offer discounted long-term contracts
+    \item Provide loyalty benefits
+    \item Assign customer success representative
+\end{itemize}
+
+\textbf{Medium Risk (40--70\%)}
+\begin{itemize}
+    \item Personalized promotional offers
+    \item Engagement follow-ups
+\end{itemize}
+
+\textbf{Low Risk (<40\%)}
+\begin{itemize}
+    \item Standard monitoring
+\end{itemize}
+
+% ---------------------------------------------------
+
+\section{Milestone 2: Agentic AI Extension}
+
+The second phase of the project aims to transform the predictive model into an intelligent agent system capable of:
+
+\begin{itemize}
+    \item Reasoning about churn probability
+    \item Retrieving retention best practices using RAG
+    \item Generating structured intervention plans
+    \item Operating through a multi-state workflow architecture
+\end{itemize}
+
+Planned workflow:
+
+\begin{center}
+Customer Profile $\rightarrow$ Risk Assessment $\rightarrow$ Knowledge Retrieval $\rightarrow$ Strategy Planning $\rightarrow$ Structured Retention Report
+\end{center}
+
+% ---------------------------------------------------
+
+\section{Team Contribution}
+
+\begin{itemize}
+    \item \textbf{Hemamdhar (Data Engineer):} Data preprocessing and feature engineering.
+    \item \textbf{Harsha (ML Engineer):} Model development and evaluation.
+    \item \textbf{Mausam (UI Developer):} Streamlit interface implementation.
+    \item \textbf{Akshay (Deployment Engineer):} Model serialization and deployment setup.
+\end{itemize}
+
+% ---------------------------------------------------
+
+\section{Conclusion}
+
+The project successfully demonstrates the application of classical machine learning techniques to predict customer churn with strong predictive performance. By integrating structured retention logic, the system transitions from predictive analytics to actionable intelligence.
+
+Future enhancements include advanced ensemble models, explainability techniques (SHAP), and full agentic reasoning implementation.
+
+\end{document}

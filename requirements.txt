@@ -1,0 +1,15 @@
+streamlit
+langchain
+langgraph
+langchain-google-genai
+langchain-community
+langchain-huggingface
+chromadb
+pandas
+scikit-learn
+pydantic
+python-dotenv
+jupyter
+matplotlib
+seaborn
+sentence-transformers

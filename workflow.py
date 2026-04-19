@@ -56,7 +56,7 @@ Theoretically, properties of similar configuration ({details.get('bhk')} BHK, {d
 *Disclaimer: This is an AI-generated advisory demo utilizing fixed model templates rather than live API calls. Do not base financial decisions solely on this.*"""
         return {"final_report": mock_report}
 
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=api_key, max_output_tokens=4096)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", google_api_key=api_key, max_output_tokens=4096)
     
     prompt = PromptTemplate(
         input_variables=["location", "bhk", "sqft", "price", "insights"],
@@ -98,7 +98,7 @@ Ensure standard financial and legal disclaimers about predictions models and rea
         })
         return {"final_report": report.content}
     except Exception as e:
-        error_msg = f"**Error:** Could not generate advisory report. This is most likely due to an invalid Google API Key.\n\n_Details:_ {str(e)}\n\nTry entering exactly `demo` in the API Key field to see a mocked response without an API key."
+        error_msg = f"**Error:** Could not generate advisory report. This is often due to API rate limits on the Free Tier.\n\n_Details:_ {str(e)}\n\n**💡 Fix:** Try entering precisely `demo` in the API Key field to see a simulated expert response without using your quota."
         return {"final_report": error_msg}
 
 def create_workflow():

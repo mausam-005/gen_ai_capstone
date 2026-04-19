@@ -56,7 +56,7 @@ Theoretically, properties of similar configuration ({details.get('bhk')} BHK, {d
 *Disclaimer: This is an AI-generated advisory demo utilizing fixed model templates rather than live API calls. Do not base financial decisions solely on this.*"""
         return {"final_report": mock_report}
 
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", google_api_key=api_key, max_tokens=1024)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=api_key, max_output_tokens=4096)
     
     prompt = PromptTemplate(
         input_variables=["location", "bhk", "sqft", "price", "insights"],
@@ -69,7 +69,9 @@ Predicted Price Valuation: ₹{price} Lakhs
 Market Insights Retrieved:
 {insights}
 
-Your report must be in Markdown format and include these specific sections verbatim:
+Your report must be in Markdown format and include these specific sections verbatim. 
+START your response directly with the first heading "### 1. Property Valuation & Market Summary". Do NOT include any introductory greetings or conversational text.
+
 ### 1. Property Valuation & Market Summary
 Outline the property valuation and an overview of the local market. Provide reasoning on why this valuation makes sense based on the insights.
 

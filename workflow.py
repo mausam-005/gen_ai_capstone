@@ -56,7 +56,7 @@ Theoretically, properties of similar configuration ({details.get('bhk')} BHK, {d
 *Disclaimer: This is an AI-generated advisory demo utilizing fixed model templates rather than live API calls. Do not base financial decisions solely on this.*"""
         return {"final_report": mock_report}
 
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=api_key, max_output_tokens=4096)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=api_key, max_output_tokens=4096)
     
     prompt = PromptTemplate(
         input_variables=["location", "bhk", "sqft", "price", "insights"],

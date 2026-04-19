@@ -201,6 +201,6 @@ if submit:
 # ============= FOOTER =============
 st.markdown("""
 <div class="app-footer">
-    <p>Built using Streamlit, LangGraph and Gemini AI — Gen AI Capstone Project</p>
+    <p>Intelligent Real Estate Advisory Dashboard | Developed for Bengaluru Property Markets</p>
 </div>
 """, unsafe_allow_html=True)

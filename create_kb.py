@@ -1,7 +1,6 @@
 import os
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 def initialize_knowledge_base():
     # Documents related to Bengaluru Real Estate Trends
@@ -17,11 +16,8 @@ def initialize_knowledge_base():
         "Bengaluru real estate overall showed a 5-7% capital appreciation in the last year, driven by return-to-office trends and strong IT sector hiring."
     ]
     
-    if "GOOGLE_API_KEY" not in os.environ:
-        print("GOOGLE_API_KEY not found in environment. Please set it before running this.")
-        return
-        
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    # Using local embeddings (no API key required for this step)
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
     # Check if DB exists
     db_dir = "./chroma_db"
